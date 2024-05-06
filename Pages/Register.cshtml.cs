@@ -9,14 +9,17 @@ namespace ToDoExampleAndy.Pages
 {
     public class RegisterModel : PageModel
     {
-        private readonly AppDbContext _context; // Database context for accessing the database
+        //Database context for accessing the database
+        private readonly AppDbContext _context;
 
+        //User model bound to the form input
         [BindProperty]
-        public UserModel User { get; set; } // User model bound to the form input
+        public UserModel User { get; set; }
 
         // Constructor injecting the database context
         public RegisterModel(AppDbContext context)
         {
+            //Set the // Assign the database context instance to the private field _dbConnection
             _context = context;
         }
 
@@ -28,24 +31,32 @@ namespace ToDoExampleAndy.Pages
         // POST handler for form submission
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) // Check if the model state is valid
+            //Check if the model state is valid
+            if (!ModelState.IsValid)
             {
-                return Page(); // Return to the page if validation fails
+                //Return to the page if validation fails
+                return Page();
             }
-
-            User.Password = HashPassword(User.Password); // Hash the password before saving
-            _context.Users.Add(User); // Add the new user to the database
-            _context.SaveChanges(); // Commit the changes to the database
-            return RedirectToPage("Login"); // Redirect to the login page on successful registration
+            //Hash the password before saving
+            User.Password = HashPassword(User.Password);
+            //Add the new user to the database
+            _context.Users.Add(User);
+            //Commit the changes to the database
+            _context.SaveChanges();
+            //Redirect to the login page on successful registration
+            return RedirectToPage("Login");
         }
 
         // Method to hash the password using a secure hash algorithm
         private string HashPassword(string password)
         {
-            byte[] salt = new byte[128 / 8]; // Generate a 128-bit salt
+            //Generate a 128-bit salt
+            byte[] salt = new byte[128 / 8];
+            //Use the RandomNumberGenerator function to create a random number
             using (var rng = RandomNumberGenerator.Create())
             {
-                rng.GetBytes(salt); // Fill the salt with cryptographically strong random bytes
+                //Fill the salt with cryptographically strong random bytes
+                rng.GetBytes(salt);
             }
 
             // Return the hashed password as a base64 string
