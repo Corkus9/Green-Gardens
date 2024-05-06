@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\Privacy.cshtml.cs" />
     <Compile Remove="Pages\ProductsEdit.cshtml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Privacy.cshtml" />
     <Content Remove="Pages\ProductsEdit.cshtml" />
   </ItemGroup>
 
