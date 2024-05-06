@@ -1,0 +1,36 @@
+﻿@page
+@model ToDoExampleAndy.Pages.ProductsModel
+@{
+    ViewData["Title"] = "Products";
+
+}
+
+<h2>Products</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td> 
+                <td>@product.Price</td> 
+                <td>@product.Description</td>
+                <td>
+                    <img src="@product.ImagePath" alt="Product Image" style="width:100px">
+                </td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+

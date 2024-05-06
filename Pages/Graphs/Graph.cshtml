@@ -1,0 +1,39 @@
+﻿@page
+@model ToDoExampleAndy.Pages.Graphs.GraphModel
+@{
+	ViewData["Title"] = "Tasks Graph";
+}
+
+<h2>Tasks Completion Graph</h2>
+
+<div>
+	<canvas id="tasksGraph"></canvas>
+</div>
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+			var ctx = document.getElementById('tasksGraph').getContext('2d');
+			var tasksData = @Html.Raw(Model.TasksJson);
+			var tasksGraph = new Chart(ctx, {
+			type: 'bar',
+		data: {
+			labels: tasksData.map(t => new Date(t.DueDate).toLocaleDateString()),
+			datasets: [{
+				label: 'Task Completion',
+				data: tasksData.map(t => t.Completed ? 1 : 0),
+				backgroundColor: 'rgba(54, 162, 235, 0.2)',
+				borderColor: 'rgba(54, 162, 235, 1)',
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
+				}
+			}
+		}
+	});
+</script>
+}

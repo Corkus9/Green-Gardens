@@ -1,0 +1,47 @@
+﻿@page
+@model ToDoExampleAndy.Pages.CreateModel
+@{
+}
+<h1>Add Item</h1>
+
+<div class="container border p-5">
+    <form method="post">
+        <!-- Description Field -->
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Description:</label>
+            </div>
+            <div class="col-8">
+                <input asp-for="Item.Description" class="form-control" />
+
+            </div>
+        </div>
+
+        <!-- Completed Checkbox -->
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Completed?:</label>
+            </div>
+            <div class="col-8">
+                <input type="checkbox" asp-for="Item.Completed" />
+            </div>
+        </div>
+
+        <!-- Due Date Field -->
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Due Date:</label>
+            </div>
+            <div class="col-8">
+                <input type="date" asp-for="Item.DueDate" class="form-control" />
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group row">
+            <div class="col">
+                <button type="submit" class="btn btn-block btn-secondary">Add Task</button>
+            </div>
+        </div>
+    </form>
+</div>

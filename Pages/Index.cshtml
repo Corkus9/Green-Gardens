@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Andy</a>.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-page="Create" class="btn btn-primary"> Add Item</a>
+    }
+    @if (User.Identity.IsAuthenticated)
+{
+    <form method="get" asp-page="/Logout">
+        <button type="submit" class="btn btn-warning">Logout</button>
+    </form>
+}
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Completed</th>
+            <th>Due Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Description</td>
+            <td>@(item.Completed ? "Yes" : "No")</td>
+            <td>@item.DueDate.ToString("yyyy-MM-dd")</td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-page="/Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-page="/Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
