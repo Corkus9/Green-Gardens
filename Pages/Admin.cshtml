@@ -1,0 +1,54 @@
+﻿@page
+@model AdminModel
+
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Green Gardens</h1>
+    <p>See our <a href="https://docs.microsoft.com/aspnet/core">Location</a>.</p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-page="SaleCreate" class="btn btn-primary"> Create Sale</a>
+        <a asp-page="ProductCreate" class="btn btn-primary"> Add Item</a>
+    }
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form method="get" asp-page="/Logout">
+            <button type="submit" class="btn btn-warning">Logout</button>
+        </form>
+    }
+
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Image</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Description</td>
+                <td>@product.Quantity</td>
+                <td>@product.ImagePath</td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>

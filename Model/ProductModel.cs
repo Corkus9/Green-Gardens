@@ -5,7 +5,7 @@ namespace ToDoExampleAndy.Model
 {
     public class ProductModel
     {
-        [Key] 
+        [Key]
         public int Guid { get; set; }
 
         [Required, StringLength(100)]
@@ -13,7 +13,10 @@ namespace ToDoExampleAndy.Model
 
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
-        
+
+        [Required]
+        public int Quantity { get; set; }
+
         [StringLength(255)]
         public string Description { get; set; }
         public string ImagePath { get; set; }
