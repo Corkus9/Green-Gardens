@@ -34,6 +34,21 @@ namespace ToDoExampleAndy.Pages
         {
             Product = _dbConnection.Products.FirstOrDefault(t => t.Guid == id);
 
+            try
+            {
+                Claim[] DataGet = HttpContext.User.Claims.ToArray();
+                if (DataGet[0].Value == null)
+                {
+                    Response.Redirect("/Login");
+                    return;
+                }
+            }
+            catch
+            {
+                Response.Redirect("/Login");
+                return;
+            }
+
             if (Product == null)
             {
                 Response.Redirect("/Products");
