@@ -19,5 +19,10 @@ namespace ToDoExampleAndy.Model
 
         [Required, StringLength(100)]
         public string Password { get; set; }
+
+        [Required, StringLength(100)]
+        public string Admin { get; set; }
+
+
     }
 }

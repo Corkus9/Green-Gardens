@@ -44,12 +44,9 @@ namespace ToDoExampleAndy.Pages
                 Claim[] DataGet = HttpContext.User.Claims.ToArray();
                 if (DataGet[3].Value != "Admin")
                 {
-                    Response.Redirect("/");
+                    Response.Redirect("/Login");
                     return;
                 }
-
-                ViewData["FName"] = DataGet[0].Value;
-                ViewData["Admin"] = DataGet[3].Value;
                 
             }
             catch

@@ -32,7 +32,7 @@
                 <label>Quantity:</label>
             </div>
             <div class="col-8">
-                <input type="number" step="1" asp-for="Item.Quantity" value="1" maximum="@Model.Product.Quantity" class="form-control" />
+                <input type="number" step="1" asp-for="Item.Quantity" value="1" min="1" max="@Model.Product.Quantity" class="form-control" />
             </div>
         </div>
 

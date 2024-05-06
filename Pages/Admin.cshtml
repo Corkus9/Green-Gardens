@@ -12,14 +12,11 @@
     <p>See our <a href="https://docs.microsoft.com/aspnet/core">Location</a>.</p>
     @if (User.Identity.IsAuthenticated)
     {
+        <a class="nav-link text-dark" asp-area="" asp-page="/Sales">Sales Page</a>
+        <a class="nav-link text-dark" asp-area="" asp-page="/Graphs/Graph">Sales Graph</a>
+
         <a asp-page="SaleCreate" class="btn btn-primary"> Create Sale</a>
         <a asp-page="ProductCreate" class="btn btn-primary"> Add Item</a>
-    }
-    @if (User.Identity.IsAuthenticated)
-    {
-        <form method="get" asp-page="/Logout">
-            <button type="submit" class="btn btn-warning">Logout</button>
-        </form>
     }
 
 </div>

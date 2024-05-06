@@ -18,6 +18,7 @@
     <None Remove="Model\NewFile.txt" />
     <None Remove="Pages\Checkout.cshtmll" />
     <None Remove="Pages\NewFile.txt" />
+    <None Remove="Pages\Shared\NewFile.txt" />
   </ItemGroup>
 
   <ItemGroup>
