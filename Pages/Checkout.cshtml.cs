@@ -32,23 +32,13 @@ namespace ToDoExampleAndy.Pages
 
         public void OnGet(int id)
         {
-            Claim[] DataGet = HttpContext.User.Claims.ToArray();
-            if (DataGet[0].Value == null)
+            Product = _dbConnection.Products.FirstOrDefault(t => t.Guid == id);
+
+            if (Product == null)
             {
-                Response.Redirect("/Login");
+                Response.Redirect("/Products");
                 return;
             }
-            else
-            {
-                Product = _dbConnection.Products.FirstOrDefault(t => t.Guid == id);
-
-                if (Product == null)
-                {
-                    Response.Redirect("/Products");
-                    return;
-                }
-            }
-
         }
 
 
@@ -68,6 +58,7 @@ namespace ToDoExampleAndy.Pages
             Item.TransactionDate = DateTime.Now;
             Item.ProductID = Product.Guid;
             Item.Price = Item.Quantity * Product.Price;
+            Product.Quantity = Product.Quantity - Item.Quantity;
             Item.CustomerName = HttpContext.User.Identity.Name;
 
             _dbConnection.Sales.Add(Item);
