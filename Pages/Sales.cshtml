@@ -1,5 +1,5 @@
 ﻿@page
-@model AdminModel
+@model SalesViewModel
 
 @{
     ViewData["Title"] = "Home page";
@@ -12,7 +12,6 @@
     <p>See our <a href="https://docs.microsoft.com/aspnet/core">Location</a>.</p>
     @if (User.Identity.IsAuthenticated)
     {
-        <a asp-page="SaleCreate" class="btn btn-primary"> Create Sale</a>
         <a asp-page="ProductCreate" class="btn btn-primary"> Add Item</a>
     }
     @if (User.Identity.IsAuthenticated)
@@ -27,34 +26,26 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>Transaction ID</th>
             <th>Price</th>
-            <th>Description</th>
+            <th>Customer Name</th>
+            <th>Product Name</th>
             <th>Quantity</th>
-            <th>Image</th>
             <th></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var product in Model.Products)
+        @foreach (var product in Model.Sales)
         {
             <tr>
-                <td>@product.Name</td>
+                <td>@product.Guid</td>
                 <td>@product.Price</td>
-                <td>@product.Description</td>
+                <td>@product.CustomerName</td>
+                <td>@product.ProductID</td>
                 <td>@product.Quantity</td>
-                <td>@product.ImagePath</td>
-                <td><a asp-page="/ProductEdit" asp-route-id="@product.Guid" class="btn btn-primary">Edit</a></td>
-                <td>
-                    <a asp-page="/ProductDelete" asp-route-id="@product.Guid" class="btn btn-danger">Delete</a>
-                </td>
-
 
             </tr>
         }
-
-
-
     </tbody>
 </table>

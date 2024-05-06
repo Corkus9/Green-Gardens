@@ -5,6 +5,7 @@ using ToDoExampleAndy.Data;
 using ToDoExampleAndy.Model;
 
 
+
 namespace ToDoExampleAndy.Pages.Graphs
 {
     public class GraphModel : PageModel
@@ -12,19 +13,20 @@ namespace ToDoExampleAndy.Pages.Graphs
 
         private readonly AppDbContext _dbConnection;
 
-        public string TasksJson { get; set; }
+        public List<SalesModel> Sales { get; set; }
+
+        public string SalesJson { get; set; }
 
         public GraphModel(AppDbContext db)
         {
             _dbConnection = db;
         }
-        
+
 
         public void OnGet()
         {
-            var items = _dbConnection.Tasks.ToList();
-            TasksJson = JsonSerializer.Serialize(items.Select(t => new { DueDate = t.DueDate.ToString("yyyy-MM-dd"), t.Completed }));
-
+            Sales = _dbConnection.Sales.ToList();
+            SalesJson = JsonSerializer.Serialize(Sales.Select(t => new { TransactionDate = t.TransactionDate.ToString("MM-dd-yyyy") }));
         }
     }
 }

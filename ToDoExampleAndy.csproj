@@ -7,6 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Pages\ProductsEdit.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\ProductsEdit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Model\NewFile.txt" />
     <None Remove="Pages\Checkout.cshtmll" />
     <None Remove="Pages\NewFile.txt" />

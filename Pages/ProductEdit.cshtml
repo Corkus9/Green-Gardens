@@ -1,0 +1,30 @@
+﻿@page "{id:int}"
+@model ToDoExampleAndy.Pages.ProductEditModel
+
+<h1>Edit Item</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Item.Guid" />
+
+    <div class="form-group">
+        <label for="Item_Name">Item Name</label>
+        <input asp-for="Item.Name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Item_Description">Item Description</label>
+        <input asp-for="Item.Description" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Item_Price">Price</label>
+        <input asp-for="Item.Price" type="number" step="0.01" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Item_Quantity">Quantity</label>
+        <input asp-for="Item.Quantity" type="number" step="1" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>
