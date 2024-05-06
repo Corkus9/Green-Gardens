@@ -15,6 +15,8 @@ namespace ToDoExampleAndy.Pages
         // A private field for logging. ILogger is used for logging different types of information.
         private readonly ILogger<AdminModel> _logger;
 
+        public ProductsModel Item { get; set; }
+
         //A list of all returned Products from the database
         public List<ProductModel> Products { get; set; }
 
@@ -37,6 +39,26 @@ namespace ToDoExampleAndy.Pages
         {
             //Retrieve the Products from the Database connection and store them as a list
             Products = _dbConnection.Products.ToList();
+            try
+            {
+                Claim[] DataGet = HttpContext.User.Claims.ToArray();
+                if (DataGet[3].Value != "Admin")
+                {
+                    Response.Redirect("/");
+                    return;
+                }
+
+                ViewData["FName"] = DataGet[0].Value;
+                ViewData["Admin"] = DataGet[3].Value;
+                
+            }
+            catch
+            {
+                Response.Redirect("/Login");
+                return;
+            }
+
+
         }
     }
 }

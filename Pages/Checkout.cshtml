@@ -1,0 +1,50 @@
+﻿@page "{id:int}"
+@model ToDoExampleAndy.Pages.CheckoutModel
+<h1>Checkout</h1>
+
+<div class="container border p-5">
+    <form method="post">
+        <!-- Name Field -->
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Product Name:</label>
+            </div>
+            <div class="col-8">
+                <p>@Model.Product.Name</p>
+
+            </div>
+        </div>
+
+        <!-- Price Field -->
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Price:</label>
+            </div>
+            <div class="col-8">
+                <p>@Model.Product.Price</p>
+            </div>
+        </div>
+
+
+        <!-- Quantity Field -->
+        <div class="form-group row">
+            <div class="col-4">
+                <label>Quantity:</label>
+            </div>
+            <div class="col-8">
+                <input type="number" step="1" asp-for="Item.Quantity" value="1" class="form-control" />
+            </div>
+        </div>
+
+
+        <input hidden type="datetime" value="<?php CURDATE(); ?>" />
+
+
+        <!-- Submit Button -->
+        <div class="form-group row">
+            <div class="col">
+                <button type="submit" class="btn btn-block btn-secondary">Add Task</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -7,30 +7,30 @@
 
 <h2>Products</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Image</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var product in Model.Products)
-        {
-            <tr>
-                <td>@product.Name</td> 
-                <td>@product.Price</td> 
-                <td>@product.Description</td>
-                <td>
-                    <img src="@product.ImagePath" alt="Product Image" style="width:100px">
-                </td>
-            </tr>
-        }
 
-
-
-    </tbody>
-</table>
+<div class="card-deck">
+    @foreach (var product in Model.Products)
+    {
+        <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@product.Name</h5>
+                <p class="card-text">@product.Description</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">@product.Price</small>
+            </div>
+            <div class="card-footer">
+                @if (product.Quantity > 0)
+                {
+                    <a asp-page="/Checkout" asp-route-id="@product.Guid" class="btn btn-primary">Checkout</a>
+                }
+                else
+                {
+                    <a class="btn btn-secondary" disabled>Out Of Stock</a>
+                }
+            </div>
+        </div>
+    }
+</div>
 

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 using ToDoExampleAndy.Data;
 using ToDoExampleAndy.Model;
 
@@ -13,7 +14,7 @@ namespace ToDoExampleAndy.Pages
 
         public List<ProductModel> Products { get; set; }
 
-        public ProductsModel (AppDbContext db)
+        public ProductsModel(AppDbContext db)
         {
             _db = db;
         }

@@ -14,6 +14,8 @@ namespace ToDoExampleAndy.Data
         public DbSet<ProductModel> Products { get; set; }
         public object Items { get; internal set; }
 
+        public DbSet<SalesModel> Sales { get; set; }
+
         // Constructor for the AppDbContext, receiving DbContextOptions of AppDbContext type.
         // It passes these options to the base DbContext class.
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
