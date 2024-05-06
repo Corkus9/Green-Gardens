@@ -18,7 +18,7 @@ namespace ToDoExampleAndy.Pages
         {
             _logger = logger;
         }
-
+        //OnGet method that is called when the page is accessed
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;

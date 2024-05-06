@@ -15,21 +15,20 @@ namespace ToDoExampleAndy.Pages
 {
     public class CheckoutModel : PageModel
     {
+        // A private field to hold the database context. This is used to interact with the database.
         private readonly AppDbContext _dbConnection;
-
-        public Guid UserID { get; set; }
-
+        //A variable of the type SalesModel to store the retrieved data
         public SalesModel Item { get; set; }
-
+        //A variable of the type ProductModel to store the retrieved data
         public ProductModel Product { get; set; }
-
+        //A variable of the type UserModel to store the retrieved data
         public UserModel UserModel { get; set; }
-
+        //A function to set the _dbConnection to the database context
         public CheckoutModel(AppDbContext context)
         {
             _dbConnection = context;
         }
-
+        //OnGet method that is called when the page is accessed
         public void OnGet(int id)
         {
             Product = _dbConnection.Products.FirstOrDefault(t => t.Guid == id);

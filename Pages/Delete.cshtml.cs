@@ -17,7 +17,7 @@ namespace ToDoExampleAndy.Pages
         {
             _dbConnection = context;
         }
-
+        //OnGet method that is called when the page is accessed
         public void OnGet(int id)
         {
             // Retrieve the item to be deleted

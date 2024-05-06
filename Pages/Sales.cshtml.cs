@@ -36,7 +36,7 @@ namespace ToDoExampleAndy.Pages
             _dbConnection = _db;
         }
 
-        // OnGet method that is called when the page is accessed.
+        //OnGet method that is called when the page is accessed
         public void OnGet()
         {
             Sales = _dbConnection.Sales.ToList();

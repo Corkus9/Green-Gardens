@@ -20,7 +20,7 @@ namespace ToDoExampleAndy.Pages
             _context = context;
         }
 
-        // GET handler to initialize any state needed for the form
+        //OnGet method that is called when the page is accessed
         public void OnGet()
         {
         }

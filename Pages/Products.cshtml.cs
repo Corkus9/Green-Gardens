@@ -18,7 +18,7 @@ namespace ToDoExampleAndy.Pages
         {
             _db = db;
         }
-
+        //OnGet method that is called when the page is accessed
         public void OnGet()
         {
             Products = _db.Products.ToList();
