@@ -58,6 +58,7 @@ namespace ToDoExampleAndy.Pages
             Item.TransactionDate = DateTime.Now;
             Item.ProductID = Product.Guid;
             Item.Price = Item.Quantity * Product.Price;
+            //Updates quantity after purchase
             Product.Quantity = Product.Quantity - Item.Quantity;
             Item.CustomerName = HttpContext.User.Identity.Name;
 
